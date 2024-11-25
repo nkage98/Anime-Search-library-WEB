@@ -3,18 +3,26 @@ from django.http import HttpResponse
 import requests
 
 def home(request):
-    try:
-        url = "https://api.jikan.moe/v4/top/anime?filter=bypopularity"
-    except:
-        return response.status_code
-    
-    response = requests.get(url)
-    topanimes = {}
-    topanimes['animes_data'] = response.json().get("data")
+        if request.method == "GET":
+                    search = request.GET['search']
+                    url = f'https://api.jikan.moe/v4/anime?q={search}&limit=20'
+                    data = requests.get(url)
+                    animes = {}
+                    animes['animes_data'] = data.json().get("data")
 
-    return render(request, 'home.html', topanimes)
+                    return render(request, 'home.html', animes)
 
-    
+        
+        else:
+                url = "https://api.jikan.moe/v4/top/anime"
+                data = requests.get(url)
+                animes = {}
+                animes['animes_data'] = data.json().get("data")
+
+                return render(request, 'home.html', animes)
+
+        
+
     
     
     
