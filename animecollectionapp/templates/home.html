@@ -5,9 +5,9 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">Anime Library</h1>
-      <p class="lead text-muted">Search your favorite anime</p>
+      <p class="lead text-muted">Search your favorite anime</p> 
       <p>
-        <form class="d-flex" method=GET action ="{% url 'home' %}">
+        <form class="d-flex" method=POST action ="{% url 'home' %}"> {% csrf_token %}
           <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search">
         </form>
         <!-- <button type="button" class="btn btn-sm btn-outline-primary">Search</button> -->
@@ -16,10 +16,20 @@
   </div>
 </section>
 
+
+
 <div class="album py-5 bg-light">
+  
   <div class="container">
+    <div>
+      {%if search %}
+      <p class="fw-light">
+        Results for "{{search}}"
+      </p>
+      {% endif %}
+    </div>
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4">
-          {% for animeinf in animes_data %}
+          {% for animeinf in animes %}
               {% include 'snippets/anime_card.html' with variavel=animeinf %}
           {% endfor %}
     </div>

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+      min-width: 200px;
+      max-width: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+
+  </style>
+</head>
+<body>
+<p> </p>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <ul class="nav nav-pills nav-stacked">
+        <img src= "{{animes.images.jpg.image_url}}" class="card-img-left" alt="anime Thumbnail">
+        <div class="card-body d-flex flex-column">
+            <h5 class="small-title">{{animes.title}}</h5>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary mt-auto">favorite</button> 
+                </div>
+                <small class="text-muted">favorites number</small>
+            </div>
+        </div>
+      </ul><br>
+      <ul class="list-group">
+        <li class="list-group-item">Type: {{animes.type}}</li>
+        <li class="list-group-item">Episodes: {{animes.episodes}}</li>
+        <li class="list-group-item">
+          {% for genres in animes.genres %}
+            {{genres.name}} 
+          {% endfor %}</li>
+        <li class="list-group-item">Status: {{animes.status}}</li>
+        <li class="list-group-item">
+          {% for studios in animes.studios %}
+            {{studios.name}} 
+          {% endfor %}
+        </li>
+        <li class="list-group-item">
+          {% if animes.aired.prop.to.year %}
+            Aired: {{animes.aired.prop.from.year}} to {{animes.aired.prop.to.year}}
+          {% else %}
+            Aired: {{animes.aired.prop.from.year}} to ? 
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+
+    <div class=" col-sm-9">
+      <h3><small>Synopsis</small></h3>
+  
+      <p class="d-flex">{{animes.synopsis}}</p>
+
+
+      <h4>Leave a Comment:</h4>
+      <form role="form">
+        <div class="form-group">
+          <textarea class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+      <br><br>
+      
+      <p><span class="badge">2</span> Comments:</p><br>
+      
+      <div class="row">
+        <div class="col-sm-2 text-center">
+          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+        </div>
+        <div class="col-sm-10">
+          <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
+          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
+        </div>
+        <div class="col-sm-2 text-center">
+          <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+        </div>
+        <div class="col-sm-10">
+          <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>
+          <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
+          <p><span class="badge">1</span> Comment:</p><br>
+          <div class="row">
+            <div class="col-sm-2 text-center">
+              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+            </div>
+            <div class="col-xs-10">
+              <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
+              <p>Me too! WOW!</p>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

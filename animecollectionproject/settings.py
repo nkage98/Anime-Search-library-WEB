@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'animecollectionapp',
+    'account'
 ]
 
 MIDDLEWARE = [
@@ -70,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-#AUTH_USER_MODEL = 'account.Account' (se for criar um usuário personalizado)
+AUTH_USER_MODEL = 'account.Account' #usuario personalizado
 
 WSGI_APPLICATION = 'animecollectionproject.wsgi.application'
 
