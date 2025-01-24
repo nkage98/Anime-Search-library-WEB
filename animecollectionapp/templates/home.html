@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <section class="py-5 text-center container">
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
@@ -21,12 +22,18 @@
 <div class="album py-5 bg-light">
   
   <div class="container">
+    
     <div>
-      {%if search %}
+      {% if search %}
       <p class="fw-light">
         Results for "{{search}}"
       </p>
+      {% else %}
+      <h5>
+        TOP Animes
+      </h5>
       {% endif %}
+      
     </div>
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-4">
           {% for animeinf in animes %}

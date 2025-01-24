@@ -10,14 +10,12 @@ def home(request):
                 animes = data.json().get("data")
 
                 return render(request, 'home.html', {'animes':animes, 'search':search})
-
-        else:
+        else:    
                 url = "https://api.jikan.moe/v4/top/anime"
                 data = requests.get(url)
                 animes = data.json().get("data")
 
                 return render(request, 'home.html', {'animes': animes})
-
         
 def anime_info(request, anime_id):
 
