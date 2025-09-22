@@ -1,6 +1,13 @@
 # Anime-Search-library-WEB
-Anime library web site using Jikan API v4 
 
-Still learning how to create a web site, so i just coded the HTML part and created a GET function for API.
+Web Application using Django, SQLite and Jikan API v4  
 
-I added a account CRUD too.
+ROUTES:
+    path('admin/'),
+    path('', home),
+    path('register/'),
+    path('logout/'),
+    path('login/'),
+    path('anime/<anime_id>/'),
+    path('account/'),
+
