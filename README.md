@@ -1,4 +1,4 @@
-# Anime-Search-library-WEB
+# Anime-library-webApp
 
 Web Application using Django, SQLite and Jikan API v4  
 
